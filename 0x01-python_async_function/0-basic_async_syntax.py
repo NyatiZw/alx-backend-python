@@ -2,22 +2,27 @@
 import random
 import asyncio
 
-""" asynchronous coroutine
+
+async def wait_random(max_delay: float = 10) -> float:
+    """ 
+    asynchronous coroutine
+
     Args:
-        max_delay: integer
-        wait_random: integer
+        max_delay: float
 
-    Return: integer value
-"""
+    Returns:
+        float default value
+    """
 
-
-async def wait_random(max_delay=10):
     delay = random.uniform(0, max_delay)
     await asyncio.sleep(delay)
     return delay
 
 
-async def main():
+async def main() -> None:
+    """
+    Main asynchronous function to run coroutine.
+    """
     result = await wait_random()
     print(f"Waited for {result:2f} seconds")
 
