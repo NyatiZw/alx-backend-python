@@ -4,7 +4,7 @@ import asyncio
 
 
 async def wait_random(max_delay: float = 10) -> float:
-    """ 
+    """
     asynchronous coroutine
 
     Args:
