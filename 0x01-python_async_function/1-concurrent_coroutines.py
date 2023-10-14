@@ -9,7 +9,8 @@ import random
 from typing import List
 
 
-async def wait_random(max_delay: int = 10) -> float:
+
+async def wait_random(max_dalay: int = 10) -> float:
     """
     asynchronous coroutine
 
@@ -19,7 +20,7 @@ async def wait_random(max_delay: int = 10) -> float:
     Returns:
         float: The actual delay in seconds.
     """
-    delay: float = random.uniform(0, max_delay)
+    delay: float = random.uniform(0, max_dalay)
     await asyncio.sleep(delay)
     return delay
 
@@ -44,7 +45,6 @@ async def main():
     n = 5
     max_delay = 3.0
     result = await wait_n(n, max_delay)
-    result.sort()
     print(result)
 
 
