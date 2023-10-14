@@ -17,17 +17,17 @@ async def wait_random(max_delay: float = 10) -> float:
     Returns:
         float default value
     """
-    delay = random.uniform(0, max_delay)
+    delay: float = random.uniform(0, max_delay)
     await asyncio.sleep(delay)
     return delay
 
 
-async def main():
+async def main() -> None:
     """
     Main asynchronous function to run coroutine.
     """
-    max_delay = 5
-    result = await wait_random(max_delay)
+    max_delay: float = 5
+    result: float = await wait_random(max_delay)
     print(f"Waited for {result:.2f} seconds")
 
 
