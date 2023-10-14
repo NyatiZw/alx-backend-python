@@ -28,7 +28,7 @@ async def main() -> None:
     """
     max_delay: float = 5
     result: float = await wait_random(max_delay)
-    print(f"Waited for {result:.2f} seconds")
+    print(f"{result:.2f}")
 
 
 if __name__ == "__main__":
