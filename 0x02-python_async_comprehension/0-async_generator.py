@@ -5,7 +5,7 @@ import random
 from typing import AsyncIterator
 
 """
-This module defines an async generator coroutine that 
+This module defines an async generator coroutine that
 yields random numbers between 0 and 10
 with a 1-second delay betwen each yield
 """
