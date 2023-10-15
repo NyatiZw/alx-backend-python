@@ -22,7 +22,7 @@ async def async_comprehension() -> List[float]:
     result = [number async for number in async_generator()]
     return result
 
-async def main():
+async def main() -> float:
     random_numbers = await async_comprehension()
     print(random_numbers)
 
