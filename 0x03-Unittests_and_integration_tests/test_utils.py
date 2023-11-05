@@ -58,8 +58,10 @@ class TestGetJson(unittest.TestCase):
     def test_get_json(self, mock_requests_get):
         # Define the test data
         test_data = [
-            {"test_url": "http://example.com", "test_payload": {"payload": True}},
-            {"test_url": "http://holberton.io", "test_payload": {"payload": False}},
+            {"test_url": "http://example.com",
+                "test_payload": {"payload": True}},
+            {"test_url": "http://holberton.io",
+                "test_payload": {"payload": False}},
         ]
 
         for data in test_data:
@@ -74,7 +76,7 @@ class TestGetJson(unittest.TestCase):
             # Call the get_json function
             result = get_json(test_url)
 
-            # Assert that the requests.get method was called exactly once with the test_url
+            # Assert that the requests.get method was called once
             mock_requests_get.assert_called_once_with(test_url)
 
             # Assert that the result of get_json is equal to the test_payload
