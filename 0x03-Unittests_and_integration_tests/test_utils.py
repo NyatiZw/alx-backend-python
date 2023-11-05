@@ -1,69 +1,24 @@
 #!/usr/bin/env python3
 
-"""Generic utilities
+""" Class that inherits from unnittest.TestCase
 """
 
 
-import requests
-from functools import wraps
-from typing import (
-        Mapping,
-        Sequence,
-        Any,
-        Dict,
-        Callable,
-)
-
-__all__ = [
-        "access_nested_map",
-        "get_json",
-        "memoize",
-]
+import unittest
+from parameterized import parameterized
+from utils import access_nested_map
 
 
-def access_nested_map(nested_map: Mapping, path: Sequence) -> Any:
-    """Access nested map with key path.
+class TestAccessNestedMap(unittest.TestCase):
 
-    Parameters:
-        nested_map (Mapping): A nested map.
-        path (Sequence): A sequence of keys
-
-    Example:
-        >>> nested_map = {"a": {"b": {"c": 1}}}
-        >>> access_nested_map(nested_map, ["a", "b", "c"])
-        1
-    """
-    for key in path:
-        if not isinstance(nested_map, Mapping):
-            raise KeyError(key)
-        nested_map = nested_map[key]
-
-    return nested_map
+    @parameterized.expand([
+        ({"a": 1}, ("a",), 1),
+        ({"a": {"b": 2}}, ("a",) {"b": 2}),
+        ({"a": {"b": 2}}, ("a", "b"), 2),
+    ])
+    def test_access_nested_map(self, nested_map, path, expected_result):
+        self.assertEqual(access_nested_map, path), expected_result)
 
 
-def get_json(url: str) -> Dict:
-    """Get JSON from a remote URL.
-
-    Parameters:
-        url (str): The URL to fetch JSON from
-
-    Return:
-        Dict: The JSON data obtained from URL.
-    """
-    response = requests.get(url)
-    return response.json()
-
-
-def memoize(fn: Callable) -> Callable:
-    """Decorator to memoize a method.
-    """
-    attr_name = "_{}".format(fn.__name__)
-
-    @wraps(fn)
-    def memoized(self):
-        """memoized wraps"""
-        if not hasattr(self, attr_name):
-            setattr(self, attr_name, fn(self))
-        return getattr(self, attr_name)
-
-    return property(memoized)
+    if __name__ == '__main__':
+        unittest.main()
