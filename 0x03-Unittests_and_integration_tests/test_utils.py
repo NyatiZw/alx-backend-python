@@ -19,7 +19,7 @@ class TestAccessNestedMap(unittest.TestCase):
 
     @parameterized.expand([
         ({}, ("a",), "Key 'a' not found in the map."),
-        ({"a": 1}, ("a", "b"), "Key 'b' not foumd in the map."),
+        ({"a": 1}, ("a", "b"), "Key 'b' not found in the map."),
     ])
     def test_access_nested_map_exception(
             self,
